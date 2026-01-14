@@ -2,12 +2,10 @@
 class Database
 {
     public $connnection;
-    public function __construct()
+    public function __construct($config, $username, $password)
     {
-        $dsn = 'mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4';
-        $username = "root";
-        $password = "6699023";
-        $this->connnection = new PDO($dsn, $username, $password);
+        $dsn = "mysql:" . http_build_query($config, '',  ";");
+        $this->connnection = new PDO($dsn, $username, $password, [PDO::FETCH_ASSOC]);
     }
     public function query($query)
     {
@@ -16,9 +14,3 @@ class Database
         return $statement;
     }
 }
-$db = new Database();
-$posts = $db->query("select * from posts where id = 1")->fetch(PDO::FETCH_ASSOC);
-echo "{$posts["id"]}: {$posts["title"]}";
-
-
-dd($posts);
