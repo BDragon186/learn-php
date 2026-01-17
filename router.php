@@ -4,7 +4,9 @@ $uri = $uri === '' ? '/' : $uri;
 $route = [
     "/" => "controllers/index.php",
     "/contact" => 'controllers/contact.php',
-    '/about' => 'controllers/about.php'
+    '/about' => 'controllers/about.php',
+    '/notes' => 'controllers/notes.php',
+    '/note' => 'controllers/note.php'
 ];
 function abort($code = 404)
 {
